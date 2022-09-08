@@ -6,11 +6,13 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     [SerializeField] private bool isPlaceable = true;
+    [SerializeField] private GameObject towerPrefab;
     private void OnMouseDown()
     {
         if (isPlaceable)
         {
-            Debug.Log(transform.name);
+            Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            isPlaceable = false;
         }
     }
 }
