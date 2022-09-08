@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1923417448484187762, guid: 4cc6f766c91a5a84fa880e406b8ac55e, type: 3}
+      propertyPath: isPlaceable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2678293245590814964, guid: 4cc6f766c91a5a84fa880e406b8ac55e, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -77,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531350445103330108, guid: 4cc6f766c91a5a84fa880e406b8ac55e, type: 3}
       propertyPath: m_Name
-      value: TileRoadRightTurn
+      value: TileRoadcorner30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc6f766c91a5a84fa880e406b8ac55e, type: 3}
