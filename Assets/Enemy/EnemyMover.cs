@@ -16,7 +16,7 @@ public class EnemyMover : MonoBehaviour
 
     private void ReturnToStart()
     {
-        gameObject.transform.position = path[0].transform.position;
+        transform.position = path[0].transform.position;
     }
     private void FindPath()
     {
