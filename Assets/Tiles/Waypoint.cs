@@ -8,14 +8,14 @@ public class Waypoint : MonoBehaviour
     [SerializeField] private bool isPlaceable = true;
     public bool IsPlaceable { get { return isPlaceable; } }
     
-    [SerializeField] private GameObject towerPrefab; 
+    [SerializeField] private Tower towerPrefab; 
 
     private void OnMouseDown()
     {
         if (isPlaceable)
         {
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
-            isPlaceable = false;
+            var isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
+            isPlaceable = !isPlaced;
         }
     }
 }
