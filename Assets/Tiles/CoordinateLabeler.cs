@@ -8,18 +8,20 @@ using TMPro;
 [RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
-    [SerializeField] Color placeableColor = Color.white;
+    [SerializeField] Color defaultColor = Color.white;
     [SerializeField] private Color nonPlaceableColor = Color.gray;
-
-    private Waypoint waypoint;
+    [SerializeField] Color exploredColor = Color.yellow;
+    [SerializeField] private Color pathColor = Color.magenta;
+    
     private TextMeshPro label;
     private Vector2Int coordinates = new Vector2Int();
+    private GridManager gridManager;
 
     private void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
         DisplayCoordinates();
-        waypoint = GetComponentInParent<Waypoint>();
         label.renderer.enabled = true;
     }
 
@@ -39,20 +41,35 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void SetCoordinateLabelColor()
     {
-        if (waypoint.IsPlaceable)
+        if (gridManager == null){return;}
+
+        Node node = gridManager.GetNode(coordinates);
+        
+        if(node==null){return;}
+
+        if (!node.isWalkable)
         {
-            label.color = placeableColor;
+            label.color = nonPlaceableColor;
+        }
+        else if (node.isPath)
+        {
+            label.color = pathColor;
+        }
+        else if (node.isExplored)
+        {
+            label.color = exploredColor;
         }
         else
         {
-            label.color = nonPlaceableColor;
+            label.color = defaultColor;
         }
     }
     private void DisplayCoordinates()
     {
+        if(gridManager == null){return;}
         Vector3 parentPos = transform.parent.position;
-        float parentPosX = parentPos.x / UnityEditor.EditorSnapSettings.move.x;
-        float parentPosY = parentPos.z / UnityEditor.EditorSnapSettings.move.z;
+        float parentPosX = parentPos.x / gridManager.UnityGridSize;
+        float parentPosY = parentPos.z / gridManager.UnityGridSize;
         coordinates.x = Mathf.RoundToInt(parentPosX);
         coordinates.y = Mathf.RoundToInt(parentPosY);
         label.text = $"{coordinates.x},{coordinates.y}";

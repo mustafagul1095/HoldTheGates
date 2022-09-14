@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  speed: 1
+  speed: 3.3
 --- !u!114 &-7133303264539639402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoint: 10
-  difficultyRamp: 1
+  difficultyRamp: 5
 --- !u!114 &-8587751762399517033
 MonoBehaviour:
   m_ObjectHideFlags: 0
